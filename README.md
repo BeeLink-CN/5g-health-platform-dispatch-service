@@ -64,8 +64,6 @@ This service acts as the central orchestrator for emergency response. It consume
 
 Build the docker image:
 
-test
-
 ```bash
 docker build -t 5g-health-dispatch-service .
 ```
