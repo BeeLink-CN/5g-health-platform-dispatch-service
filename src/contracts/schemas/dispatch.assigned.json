@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "dispatch.assigned",
+    "title": "Dispatch Assigned",
+    "type": "object",
+    "properties": {
+        "dispatch_id": {
+            "type": "string"
+        },
+        "ambulance_id": {
+            "type": "string"
+        },
+        "hospital_id": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "const": "assigned"
+        }
+    },
+    "required": [
+        "dispatch_id",
+        "ambulance_id",
+        "hospital_id",
+        "timestamp",
+        "status"
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "dispatch.created",
+    "title": "Dispatch Created",
+    "type": "object",
+    "properties": {
+        "dispatch_id": {
+            "type": "string"
+        },
+        "patient_id": {
+            "type": "string"
+        },
+        "alert_id": {
+            "type": "string"
+        },
+        "severity": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "const": "created"
+        },
+        "payload": {
+            "type": "object"
+        }
+    },
+    "required": [
+        "dispatch_id",
+        "patient_id",
+        "timestamp",
+        "status"
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "patient.alert.raised",
+    "title": "Patient Alert Raised",
+    "type": "object",
+    "properties": {
+        "alert_id": {
+            "type": "string"
+        },
+        "patient_id": {
+            "type": "string"
+        },
+        "severity": {
+            "type": "string",
+            "enum": [
+                "low",
+                "medium",
+                "high",
+                "critical"
+            ]
+        },
+        "message": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "vitals": {
+            "type": "object"
+        }
+    },
+    "required": [
+        "alert_id",
+        "patient_id",
+        "timestamp"
+    ]
+}

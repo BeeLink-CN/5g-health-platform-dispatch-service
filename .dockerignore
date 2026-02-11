@@ -1,0 +1,11 @@
+node_modules
+dist
+coverage
+.git
+.github
+*.log
+.env
+docker-compose.yml
+README.md
+jest.config.js
+jest.integration.config.js

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  dispatch-service:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+      - PORT=8093
+      - LOG_LEVEL=debug
+      - DATABASE_URL=postgres://user:password@postgres:5432/dispatch_db
+      - NATS_URL=nats://nats:4222
+      - AMBULANCE_IDS=amb-1,amb-2,amb-3
+      - HOSPITAL_IDS=ank-001,ank-002
+      - CONTRACTS_PATH=/app/src/contracts/schemas
+    ports:
+      - "8093:8093"
+    depends_on:
+      - postgres
+      - nats
+    command: npm run dev
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dispatch_db
+    ports:
+      - "5433:5432" # Avoid conflict with default pg
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  nats:
+    image: nats:2.10-alpine
+    command: "-js -sd /data"
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+
+volumes:
+  pgdata:
